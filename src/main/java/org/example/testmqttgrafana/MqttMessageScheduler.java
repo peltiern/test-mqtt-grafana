@@ -1,6 +1,5 @@
 package org.example.testmqttgrafana;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -9,29 +8,32 @@ import java.util.Random;
 @Component
 public class MqttMessageScheduler {
 
-	@Autowired
-	private MqttPublisherService mqttPublisherService;
+	private final MqttPublisherService mqttPublisherService;
 
 	Random random = new Random();
 
-	@Scheduled(fixedRate = 500)  // Envoie un message toutes les 5 secondes
-	public void sendMqttMessage1() {
-		int humidity = random.nextInt(21) + 50;
-		String content = "{\"humidity\":" + humidity + "}";
-		mqttPublisherService.publish(content);
+	public MqttMessageScheduler(MqttPublisherService mqttPublisherService) {
+		this.mqttPublisherService = mqttPublisherService;
 	}
 
-	@Scheduled(fixedRate = 200)  // Envoie un message toutes les 5 secondes
-	public void sendMqttMessage2() {
+//	@Scheduled(fixedRate = 500)
+//	public void sendHumidity() {
+//		int humidity = random.nextInt(21) + 50;
+//		String content = "{\"humidity\":" + humidity + "}";
+//		mqttPublisherService.publish("humidity", content);
+//	}
+
+	@Scheduled(fixedRate = 200)
+	public void sendTemperature() {
 		int temperature = random.nextInt(21) + 10;
 		String content = "{\"temperature\":" + temperature + "}";
-		mqttPublisherService.publish(content);
+		mqttPublisherService.publish("temperature", content);
 	}
 
-	@Scheduled(fixedRate = 700)  // Envoie un message toutes les 5 secondes
-	public void sendMqttMessage3() {
-		int voltage = random.nextInt(1000) + 5000;
-		String content = "{\"battery_voltage_mv\":" + voltage + "}";
-		mqttPublisherService.publish(content);
-	}
+//	@Scheduled(fixedRate = 700)
+//	public void sendVoltage() {
+//		int voltage = random.nextInt(1000) + 5000;
+//		String content = "{\"voltage\":" + voltage + "}";
+//		mqttPublisherService.publish("voltage", content);
+//	}
 }

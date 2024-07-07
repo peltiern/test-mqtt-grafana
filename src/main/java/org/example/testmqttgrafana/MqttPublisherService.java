@@ -23,11 +23,11 @@ public class MqttPublisherService {
 		}
 	}
 
-	public void publish(String content) {
+	public void publish(String sousTopic, String content) {
 		try {
 			MqttMessage message = new MqttMessage(content.getBytes());
 			message.setQos(2);
-			client.publish(topic, message);
+			client.publish(topic + "/" + sousTopic, message);
 			System.out.println("Message published: " + content);
 		} catch (MqttException e) {
 			e.printStackTrace();
