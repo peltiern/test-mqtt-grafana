@@ -18,7 +18,7 @@
 	"editable": true,
 	"fiscalYearStartMonth": 0,
 	"graphTooltip": 0,
-	"id": 1,
+	"id": 2,
 	"links": [
 		{
 			"asDropdown": false,
@@ -38,7 +38,54 @@
 		{
 			"datasource": {
 				"type": "grafana-mqtt-datasource",
-				"uid": "ddr9jglhtmgw0d"
+				"uid": "ddrfno09gfv9cb"
+			},
+			"gridPos": {
+				"h": 7,
+				"w": 8,
+				"x": 0,
+				"y": 0
+			},
+			"id": 3,
+			"options": {
+				"autoPlay": true,
+				"buttons": [],
+				"controls": true,
+				"formats": [
+					"audio",
+					"image",
+					"pdf",
+					"video"
+				],
+				"height": 0,
+				"heightMode": "auto",
+				"infinityPlay": false,
+				"name": "image",
+				"noResultsMessage": "Nothing to display...",
+				"scale": "auto",
+				"toolbar": true,
+				"width": 0,
+				"widthMode": "original",
+				"zoomType": "default"
+			},
+			"pluginVersion": "11.1.0",
+			"targets": [
+				{
+					"datasource": {
+						"type": "grafana-mqtt-datasource",
+						"uid": "ddrfno09gfv9cb"
+					},
+					"refId": "A",
+					"topic": "robot_telemetrie/image"
+				}
+			],
+			"title": "Webcam",
+			"type": "volkovlabs-image-panel"
+		},
+		{
+			"datasource": {
+				"type": "grafana-mqtt-datasource",
+				"uid": "ddrfno09gfv9cb"
 			},
 			"fieldConfig": {
 				"defaults": {
@@ -95,9 +142,9 @@
 				"overrides": []
 			},
 			"gridPos": {
-				"h": 7,
-				"w": 24,
-				"x": 0,
+				"h": 6,
+				"w": 12,
+				"x": 10,
 				"y": 0
 			},
 			"id": 2,
@@ -117,7 +164,7 @@
 				{
 					"datasource": {
 						"type": "grafana-mqtt-datasource",
-						"uid": "ddr9jglhtmgw0d"
+						"uid": "ddrfno09gfv9cb"
 					},
 					"refId": "A",
 					"topic": "robot_telemetrie/voltage"
@@ -129,7 +176,7 @@
 		{
 			"datasource": {
 				"type": "grafana-mqtt-datasource",
-				"uid": "ddr9jglhtmgw0d"
+				"uid": "ddrfno09gfv9cb"
 			},
 			"fieldConfig": {
 				"defaults": {
@@ -218,10 +265,10 @@
 				]
 			},
 			"gridPos": {
-				"h": 11,
-				"w": 24,
-				"x": 0,
-				"y": 7
+				"h": 8,
+				"w": 12,
+				"x": 10,
+				"y": 6
 			},
 			"id": 1,
 			"options": {
@@ -240,22 +287,22 @@
 				{
 					"datasource": {
 						"type": "grafana-mqtt-datasource",
-						"uid": "ddr9jglhtmgw0d"
+						"uid": "ddrfno09gfv9cb"
 					},
-					"refId": "A",
+					"refId": "Température",
 					"topic": "robot_telemetrie/temperature"
 				},
 				{
 					"datasource": {
 						"type": "grafana-mqtt-datasource",
-						"uid": "ddr9jglhtmgw0d"
+						"uid": "ddrfno09gfv9cb"
 					},
 					"hide": false,
-					"refId": "B",
+					"refId": "Humidité",
 					"topic": "robot_telemetrie/humidity"
 				}
 			],
-			"title": "Température",
+			"title": "Température / Humidité",
 			"type": "timeseries"
 		}
 	],
@@ -271,8 +318,8 @@
 	},
 	"timepicker": {},
 	"timezone": "browser",
-	"title": "Robot Dashboard",
+	"title": "Robot Dashboard with Base64 plugin",
 	"uid": "cdr1s27qyvzlsb",
-	"version": 16,
+	"version": 26,
 	"weekStart": ""
 }

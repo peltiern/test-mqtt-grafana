@@ -1,6 +1,13 @@
 version: "3"
 
 services:
+  test-mqtt-grafana:
+    build: .
+    networks:
+      - iot
+    depends_on:
+      - mosquitto
+
   mosquitto:
     image: eclipse-mosquitto:latest
     container_name: mosquitto
@@ -52,11 +59,13 @@ services:
     networks:
       - iot
     volumes:
+      - ./grafana-provisioning:/etc/grafana/provisioning
       - grafana-data:/var/lib/grafana
     environment:
       - GF_AUTH_DISABLE_LOGIN_FORM=false
       - GF_SECURITY_API_KEY_ENABLED=true
       - GF_SECURITY_ALLOW_EMBEDDING=true
+      - GF_INSTALL_PLUGINS=grafana-mqtt-datasource,volkovlabs-image-panel
 #    depends_on:
 #      - influxdb
 

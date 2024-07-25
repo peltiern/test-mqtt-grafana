@@ -1,11 +1,13 @@
 package org.example.testmqttgrafana;
 
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Base64;
@@ -24,14 +26,14 @@ public class MqttMessageScheduler {
 		this.mqttPublisherService = mqttPublisherService;
 	}
 
-	@Scheduled(fixedRate = 500)
+//	@Scheduled(fixedRate = 500)
 	public void sendHumidity() {
 		int humidity = random.nextInt(21) + 50;
 		String content = "{\"humidity\":" + humidity + "}";
 		mqttPublisherService.publish("humidity", content);
 	}
 
-	@Scheduled(fixedRate = 200)
+//	@Scheduled(fixedRate = 200)
 	public void sendTemperature() {
 		int temperature = random.nextInt(21) + 10;
 		String content = "{\"temperature\":" + temperature + "}";
@@ -48,10 +50,12 @@ public class MqttMessageScheduler {
 	@Scheduled(fixedRate = 50)
 	public void sendImage() throws IOException {
 		int idxImage = (index++) % 10;
-		File file = ResourceUtils.getFile("classpath:images/frame_0" + idxImage + ".jpg");
-		byte[] fileBytes = Files.readAllBytes(Path.of(file.getPath()));
-		String imageBase64 = "data:image/jpg;base64," + Base64.getEncoder().encodeToString(fileBytes);
-		String content = "{\"image\":\"" + imageBase64 + "\"}";
-		mqttPublisherService.publish("image", content);
+		ClassPathResource resource = new ClassPathResource("images/frame_0" + idxImage + ".jpg");
+		try (InputStream inputStream = resource.getInputStream()) {
+			byte[] fileBytes = inputStream.readAllBytes();
+			String imageBase64 = "data:image/jpg;base64," + Base64.getEncoder().encodeToString(fileBytes);
+			String content = "{\"image\":\"" + imageBase64 + "\"}";
+			mqttPublisherService.publish("image", content);
+		}
 	}
 }
