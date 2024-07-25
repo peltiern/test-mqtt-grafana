@@ -32,17 +32,17 @@ services:
 #      - DOCKER_INFLUXDB_INIT_BUCKET=donnees_robot
 #      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=4eYvsu8wZCJ6tKuE2sxvFHkvYFwSMVK0011hEEiojvejzpSaij86vYQomN_12au6eK-2MZ6Knr-Sax201y70w==
 
-  telegraf:
-    image: telegraf:latest
-    container_name: telegraf
-#    restart: always
-    volumes:
-      - ./telegraf_live.conf:/etc/telegraf/telegraf.conf:ro
-    depends_on:
-      - mosquitto
-#      - influxdb
-    networks:
-      - iot
+#  telegraf:
+#    image: telegraf:latest
+#    container_name: telegraf
+##    restart: always
+#    volumes:
+#      - ./telegraf_live.conf:/etc/telegraf/telegraf.conf:ro
+#    depends_on:
+#      - mosquitto
+##      - influxdb
+#    networks:
+#      - iot
 
   grafana:
     image: grafana/grafana:latest
@@ -58,6 +58,8 @@ services:
     environment:
       - GF_AUTH_DISABLE_LOGIN_FORM=false
       - GF_SECURITY_API_KEY_ENABLED=true
+      - GF_SECURITY_ALLOW_EMBEDDING=true
+#      - GF_INSTALL_PLUGINS=grafana-mqtt-datasource
 #    depends_on:
 #      - influxdb
 

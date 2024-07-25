@@ -28,7 +28,7 @@ public class MqttPublisherService {
 			MqttMessage message = new MqttMessage(content.getBytes());
 			message.setQos(2);
 			client.publish(topic + "/" + sousTopic, message);
-			System.out.println("Message published: " + content);
+//			System.out.println("Message published: " + content);
 		} catch (MqttException e) {
 			e.printStackTrace();
 		}
