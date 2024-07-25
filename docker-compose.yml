@@ -47,19 +47,16 @@ services:
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
-#    restart: always
     ports:
       - "3000:3000"
     networks:
       - iot
     volumes:
-#      - ./grafana-provisioning:/etc/grafana/provisioning
       - grafana-data:/var/lib/grafana
     environment:
       - GF_AUTH_DISABLE_LOGIN_FORM=false
       - GF_SECURITY_API_KEY_ENABLED=true
       - GF_SECURITY_ALLOW_EMBEDDING=true
-#      - GF_INSTALL_PLUGINS=grafana-mqtt-datasource
 #    depends_on:
 #      - influxdb
 
