@@ -38,7 +38,7 @@
 		{
 			"datasource": {
 				"type": "grafana-mqtt-datasource",
-				"uid": "ddrfno09gfv9cb"
+				"uid": "123456789"
 			},
 			"gridPos": {
 				"h": 7,
@@ -73,7 +73,7 @@
 				{
 					"datasource": {
 						"type": "grafana-mqtt-datasource",
-						"uid": "ddrfno09gfv9cb"
+						"uid": "123456789"
 					},
 					"refId": "A",
 					"topic": "robot_telemetrie/image"
@@ -85,7 +85,7 @@
 		{
 			"datasource": {
 				"type": "grafana-mqtt-datasource",
-				"uid": "ddrfno09gfv9cb"
+				"uid": "123456789"
 			},
 			"fieldConfig": {
 				"defaults": {
@@ -164,7 +164,7 @@
 				{
 					"datasource": {
 						"type": "grafana-mqtt-datasource",
-						"uid": "ddrfno09gfv9cb"
+						"uid": "123456789"
 					},
 					"refId": "A",
 					"topic": "robot_telemetrie/voltage"
@@ -176,7 +176,7 @@
 		{
 			"datasource": {
 				"type": "grafana-mqtt-datasource",
-				"uid": "ddrfno09gfv9cb"
+				"uid": "123456789"
 			},
 			"fieldConfig": {
 				"defaults": {
@@ -287,7 +287,7 @@
 				{
 					"datasource": {
 						"type": "grafana-mqtt-datasource",
-						"uid": "ddrfno09gfv9cb"
+						"uid": "123456789"
 					},
 					"refId": "Température",
 					"topic": "robot_telemetrie/temperature"
@@ -295,7 +295,7 @@
 				{
 					"datasource": {
 						"type": "grafana-mqtt-datasource",
-						"uid": "ddrfno09gfv9cb"
+						"uid": "123456789"
 					},
 					"hide": false,
 					"refId": "Humidité",

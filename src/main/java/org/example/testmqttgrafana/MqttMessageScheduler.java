@@ -26,14 +26,14 @@ public class MqttMessageScheduler {
 		this.mqttPublisherService = mqttPublisherService;
 	}
 
-//	@Scheduled(fixedRate = 500)
+	@Scheduled(fixedRate = 500)
 	public void sendHumidity() {
 		int humidity = random.nextInt(21) + 50;
 		String content = "{\"humidity\":" + humidity + "}";
 		mqttPublisherService.publish("humidity", content);
 	}
 
-//	@Scheduled(fixedRate = 200)
+	@Scheduled(fixedRate = 200)
 	public void sendTemperature() {
 		int temperature = random.nextInt(21) + 10;
 		String content = "{\"temperature\":" + temperature + "}";
