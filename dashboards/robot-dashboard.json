@@ -18,6 +18,7 @@
 	"editable": true,
 	"fiscalYearStartMonth": 0,
 	"graphTooltip": 0,
+	"id": 1,
 	"links": [
 		{
 			"asDropdown": false,
@@ -39,51 +40,124 @@
 				"type": "grafana-mqtt-datasource",
 				"uid": "123456789"
 			},
+			"fieldConfig": {
+				"defaults": {
+					"color": {
+						"mode": "thresholds"
+					},
+					"custom": {
+						"hideFrom": {
+							"legend": false,
+							"tooltip": false,
+							"viz": false
+						}
+					},
+					"mappings": [],
+					"thresholds": {
+						"mode": "absolute",
+						"steps": [
+							{
+								"color": "green",
+								"value": null
+							},
+							{
+								"color": "red",
+								"value": 80
+							}
+						]
+					}
+				},
+				"overrides": []
+			},
 			"gridPos": {
-				"h": 7,
-				"w": 8,
+				"h": 11,
+				"w": 14,
 				"x": 0,
 				"y": 0
 			},
-			"id": 3,
+			"id": 4,
 			"options": {
-				"autoPlay": true,
-				"autoPlayInfinity": false,
-				"buttons": [],
-				"controls": true,
-				"height": 0,
-				"heightMode": "auto",
-				"infinityPlay": false,
-				"mediaSources": [
+				"basemap": {
+					"config": {},
+					"name": "Layer 0",
+					"type": "default"
+				},
+				"controls": {
+					"mouseWheelZoom": true,
+					"showAttribution": true,
+					"showDebug": false,
+					"showMeasure": false,
+					"showScale": false,
+					"showZoom": true
+				},
+				"layers": [
 					{
-						"field": "image",
-						"id": "ec5791ab-8c37-4458-a7d9-5e6068427160",
-						"refId": "",
-						"type": "image"
+						"config": {
+							"showLegend": true,
+							"style": {
+								"color": {
+									"fixed": "dark-green"
+								},
+								"opacity": 0.4,
+								"rotation": {
+									"field": "angle",
+									"fixed": 0,
+									"max": 360,
+									"min": -360,
+									"mode": "mod"
+								},
+								"size": {
+									"fixed": 5,
+									"max": 15,
+									"min": 2
+								},
+								"symbol": {
+									"fixed": "img/icons/marker/triangle.svg",
+									"mode": "fixed"
+								},
+								"symbolAlign": {
+									"horizontal": "center",
+									"vertical": "center"
+								},
+								"textConfig": {
+									"fontSize": 12,
+									"offsetX": 0,
+									"offsetY": 0,
+									"textAlign": "center",
+									"textBaseline": "middle"
+								}
+							}
+						},
+						"location": {
+							"latitude": "lat",
+							"longitude": "long",
+							"mode": "coords"
+						},
+						"name": "Layer 1",
+						"tooltip": true,
+						"type": "markers"
 					}
 				],
-				"name": "image",
-				"noResultsMessage": "Nothing to display...",
-				"pdfToolbar": true,
-				"scale": "auto",
-				"toolbar": true,
-				"width": 0,
-				"widthMode": "original",
-				"zoomType": "default"
+				"tooltip": {
+					"mode": "details"
+				},
+				"view": {
+					"allLayers": true,
+					"id": "fit",
+					"lat": 0,
+					"lon": 0,
+					"zoom": 15
+				}
 			},
-			"pluginVersion": "6.1.0",
+			"pluginVersion": "11.5.1",
 			"targets": [
 				{
-					"datasource": {
-						"type": "grafana-mqtt-datasource",
-						"uid": "123456789"
-					},
 					"refId": "A",
-					"topic": "robot_telemetrie/image"
+					"topic": "robot_telemetrie/position_gps"
 				}
 			],
-			"title": "Webcam",
-			"type": "volkovlabs-image-panel"
+			"title": "Localisation",
+			"type": "geomap"
 		},
 		{
 			"datasource": {
@@ -102,6 +176,7 @@
 						"axisLabel": "",
 						"axisPlacement": "auto",
 						"barAlignment": 0,
+						"barWidthFactor": 0.6,
 						"drawStyle": "line",
 						"fillOpacity": 0,
 						"gradientMode": "none",
@@ -145,9 +220,9 @@
 				"overrides": []
 			},
 			"gridPos": {
-				"h": 6,
-				"w": 12,
-				"x": 10,
+				"h": 5,
+				"w": 8,
+				"x": 14,
 				"y": 0
 			},
 			"id": 2,
@@ -159,10 +234,12 @@
 					"showLegend": true
 				},
 				"tooltip": {
+					"hideZeros": false,
 					"mode": "single",
 					"sort": "none"
 				}
 			},
+			"pluginVersion": "11.5.1",
 			"targets": [
 				{
 					"datasource": {
@@ -194,6 +271,7 @@
 						"axisLabel": "",
 						"axisPlacement": "auto",
 						"barAlignment": 0,
+						"barWidthFactor": 0.6,
 						"drawStyle": "line",
 						"fillOpacity": 0,
 						"gradientMode": "none",
@@ -268,10 +346,10 @@
 				]
 			},
 			"gridPos": {
-				"h": 8,
-				"w": 12,
-				"x": 10,
-				"y": 6
+				"h": 6,
+				"w": 8,
+				"x": 14,
+				"y": 5
 			},
 			"id": 1,
 			"options": {
@@ -282,10 +360,12 @@
 					"showLegend": true
 				},
 				"tooltip": {
+					"hideZeros": false,
 					"mode": "single",
 					"sort": "none"
 				}
 			},
+			"pluginVersion": "11.5.1",
 			"targets": [
 				{
 					"datasource": {
@@ -307,10 +387,66 @@
 			],
 			"title": "Température / Humidité",
 			"type": "timeseries"
+		},
+		{
+			"datasource": {
+				"type": "grafana-mqtt-datasource",
+				"uid": "123456789"
+			},
+			"fieldConfig": {
+				"defaults": {},
+				"overrides": []
+			},
+			"gridPos": {
+				"h": 7,
+				"w": 8,
+				"x": 0,
+				"y": 11
+			},
+			"id": 3,
+			"options": {
+				"autoPlay": true,
+				"autoPlayInfinity": false,
+				"buttons": [],
+				"controls": true,
+				"height": 0,
+				"heightMode": "auto",
+				"infinityPlay": false,
+				"mediaSources": [
+					{
+						"field": "image",
+						"id": "ec5791ab-8c37-4458-a7d9-5e6068427160",
+						"refId": "",
+						"type": "image"
+					}
+				],
+				"name": "image",
+				"noResultsMessage": "Nothing to display...",
+				"pdfToolbar": true,
+				"scale": "auto",
+				"toolbar": true,
+				"width": 0,
+				"widthMode": "original",
+				"zoomType": "default"
+			},
+			"pluginVersion": "6.2.0",
+			"targets": [
+				{
+					"datasource": {
+						"type": "grafana-mqtt-datasource",
+						"uid": "123456789"
+					},
+					"refId": "A",
+					"topic": "robot_telemetrie/image"
+				}
+			],
+			"title": "Webcam",
+			"type": "volkovlabs-image-panel"
 		}
 	],
+	"preload": false,
 	"refresh": "",
-	"schemaVersion": 39,
+	"schemaVersion": 40,
 	"tags": [],
 	"templating": {
 		"list": []
